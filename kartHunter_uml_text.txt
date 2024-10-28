@@ -1,0 +1,90 @@
+@startuml
+
+class KartHunter{
+
++ static final List<List<Card>> decks
++ static boolean exit
++ static Scanner console
++ static Card card
++ static void main(String[] args) throws IOException
+- static void exit()
+- static void initilizeAPI()
++ static List<Card> fetchCards(List<String> filter)
+- static void searchCardsByName()
+- static void selectSearchCardMenu
+- static void selectSearchCard(List<Card> cardSelect)
+- static void searchCardListPrint(List<Card> cards)
+- static void searchCardMenu()
++ static void initilizeDecks()
+- static void printDeckPreview()
+- static void Decks()
+- static void viewCardsInDeck(List<Card> deck)
+- static void editDeck(List<Card> deck)
+- static void deckController(List<Card> deck, int choice)
+- static void copyDeck(List<Card> deck)
+- static void deckErase(List<Card> deck)
++ static void addCardToDeck(Card card)
++ static void removeCardFromDeck(List<Card> deck)
+- static void runMenu()
+- static void performActions(int choice)
+- static void advancedSearch()
+- static void searchSets()
+- static void viewAllSets()
+- static void printHeader()
+- static void printMenu()
+- static void searchCardMenuHeader()
+- static void advancedSearchMenuHeader()
+- static void DecksMenuHeader()
+- static void selectSearchCardMenuHeader()
+- static void printCardInfo(Card card)
+- static int getInput(int min, int max)
+- static String getStringInput()
++ static void detailedInspect()
+}
+ 
+class CardAPI {
+
+- static final String RESOURCE_PATH
++ static Card getCard(String cardId)
++ static Card getCard(int multiverseId)
++ static List<Card> getAllCards()
++ static List<String> getAllCardTypes()
++ static List<String> getAllCardSupertypes()
++ static List<String> getAllCardSubtypes()
++ static List<Card> getAllCards(List<String> filters)
+}
+
+class MTGAPI{
+
+- static String ENDPOINT
+- static lonmg connectTimeout
+- static long writeTimeout
+- static long readTimeout
+- static OkHttpClient client
+- static String DELIM_LINK
+- static String DELIM_LINK_PARAM
+- static OkHttpClient getClient()
++ static long getConnectTimeout()
++ static void setConnectTimeout(long connectTimeout)
++ static long getWriteTimeout()
++ static void setWriteTimeout(long writeTimeout)
++ static long getReadTimeout()
++ static void setReadTimeout(long readTimeout)
+- static void recreateClient()
+- static <TYPE> TYPE get(String path, String key, Class<TYPE> expectedClass)
+- protected static <TYPE> List<TYPE> getList(String path, String key, Class<TYPE> expectedClass)
+- static List<JsonObject> getJsonObject(String path, Gson deserializer)
+- static <TYPE> List<TYPE> getList(String path, String key, Class<TYPE> expectedClass, List<String> filters)
+}
+
+class SetAPI{
+
+- static final String RESOURCE_PATH
++ static MtgSet getSet(String setCode)
++ static List<MtgSet> getAllSets()
++ static List<Card> getBooster(String setCode)
++ static List<MtgSet> getAllSets(List<String> filters)
++ static List<MtgSet> getAllSetsWithCards() 
+}
+
+@enduml
